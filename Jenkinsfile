@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'default'
-    }
-
     stages {
 
         stage('Checkout') {
