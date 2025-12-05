@@ -22,6 +22,10 @@ pipeline {
                 sh 'flutter test'
             }
         }
+        
+        environment {
+            PATH = "/opt/flutter/bin:${env.PATH}"
+        }
 
         //opcional
         stage('Build APK') {
