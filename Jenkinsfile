@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "/opt/flutter/bin:${env.PATH}"
+    }
+
     stages {
 
         stage('Checkout') {
@@ -13,6 +17,7 @@ pipeline {
 
         stage('Install Flutter dependencies') {
             steps {
+                sh 'flutter --version'
                 sh 'flutter pub get'
             }
         }
@@ -22,13 +27,8 @@ pipeline {
                 sh 'flutter test'
             }
         }
-        
-        environment {
-            PATH = "/opt/flutter/bin:${env.PATH}"
-        }
 
-        //opcional
-        stage('Build APK') {
+        stage('Build APK (Optional)') {
             steps {
                 sh 'flutter build apk'
             }
