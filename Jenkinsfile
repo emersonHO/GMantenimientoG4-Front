@@ -29,6 +29,9 @@ pipeline {
         }
 
         stage('Build APK (Optional)') {
+            when {
+                expression { false }
+            }
             steps {
                 sh 'flutter build apk'
             }
